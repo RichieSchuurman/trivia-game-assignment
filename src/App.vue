@@ -1,19 +1,22 @@
-<script setup>
-
-</script>
-
 <template>
-  <h1> Hello trivia game!</h1>
-  <router-view></router-view>
+  <div id="app">
+
+    <main class="d-flex justify-content-center align-items-center main-content-block" id="content">
+      <RouterView :key="$route.path"/>
+    </main>
+
+  </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<script>
+export default {
+  name: "App",
+  created() {
+    document.body.style.backgroundColor = "#7D8491";
+  },
+};
+</script>
+
+<style scoped>
+ @import "./utils/main.css";
 </style>
