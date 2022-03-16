@@ -6,6 +6,7 @@ const baseType = "&type=";
 
 export function getUrl(amount, category, type, difficulty){
     const url = `${baseURL}${baseAmount}${amount}${baseCategory}${category}${baseDifficulty}${difficulty}${baseType}${type}`
+
     console.log(url);
 
     fetch(url)

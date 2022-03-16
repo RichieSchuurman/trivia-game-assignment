@@ -44,7 +44,7 @@
 
     <div class="row">
       <div class = "col">
-        <input type="radio" name= "questionType" class="radio" value="multiple Choice"  v-model="questionType"  />
+        <input type="radio" name= "questionType" class="radio" value="multiple"  v-model="questionType"  />
         <label>Multiple choice</label>
       </div>
       <div class = "col">
