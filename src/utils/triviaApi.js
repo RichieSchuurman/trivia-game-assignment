@@ -11,7 +11,9 @@ export function getUrl(amount, category, type, difficulty){
 
     fetch(url)
     .then(response => response.json())
-    .then(data => console.log(data))
-
-
+    .then(data => data.results)
+    .then(results => {
+        const question = results.map(results => results.question);
+        console.log(question);
+    })
 }
