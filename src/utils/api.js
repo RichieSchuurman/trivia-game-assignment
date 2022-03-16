@@ -1,5 +1,5 @@
-const apiURL = "https://noroff-assignment-users-api.herokuapp.com";
-const apiKey = "api_key";
+const apiURL = "https://trivia-assignment.herokuapp.com";
+const apiKey = "8599272a-ba9e-4bb0-9b75-f5ac2c9390c9";
 
 export function attemptLogin(name) {
   fetch(`${apiURL}/trivia?username=${name}`)
@@ -16,3 +16,30 @@ export function attemptLogin(name) {
     })
     .catch((error) => {});
 }
+
+export function register(name) {
+  fetch(`${apiURL}/trivia`, {
+    method: "POST",
+    headers: {
+      "X-API-Key": apiKey,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: name,
+      highScore: 0,
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Could not create new user");
+      }
+      return response.json();
+    })
+    .then((newUser) => {
+      return newUser;
+    })
+    .catch((error) => {});
+}
+
+
+

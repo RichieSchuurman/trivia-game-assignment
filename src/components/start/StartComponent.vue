@@ -15,15 +15,15 @@
 
     <div class="row">
       <div class = "col">
-        <input type="radio" name= "difficulty" class="radio" value="Easy" v-model="difficulty"  />
+        <input type="radio" name= "difficulty" class="radio" value="easy" v-model="difficulty"  />
         <label>Easy</label>
       </div>
       <div class = "col">
-        <input type="radio"  name= "difficulty" class="radio" value="Medium" v-model="difficulty" />
+        <input type="radio"  name= "difficulty" class="radio" value="medium" v-model="difficulty" />
         <label>Medium</label>
       </div>
       <div class = "col">
-        <input type="radio"  name= "difficulty" class="radio" value="Hard" v-model="difficulty" />
+        <input type="radio"  name= "difficulty" class="radio" value="hard" v-model="difficulty" />
         <label>Hard</label>
       </div>
     </div>
@@ -32,25 +32,23 @@
 
     <select class="form-select" aria-label="Default select example" v-model="category">
       <option selected>Category</option>
-      <option value="Art">Art</option>
-      <option value="History">History</option>
-      <option value="Animals">Animals</option>
-      <option value="Politics">Politics</option>
-      <option value="Sports">Sports</option>
-      <option value="Mythology">Mythology</option>
-
-
+      <option value="25">Art</option>
+      <option value="23">History</option>
+      <option value="27">Animals</option>
+      <option value="24">Politics</option>
+      <option value="21">Sports</option>
+      <option value="20">Mythology</option>
     </select>
     
     <br>
 
     <div class="row">
       <div class = "col">
-        <input type="radio" name= "questionType" class="radio" value="Multiple Choice"  v-model="questionType"  />
+        <input type="radio" name= "questionType" class="radio" value="multiple Choice"  v-model="questionType"  />
         <label>Multiple choice</label>
       </div>
       <div class = "col">
-        <input type="radio" name= "questionType" class="radio" value="True / False"  v-model="questionType" />
+        <input type="radio" name= "questionType" class="radio" value="boolean"  v-model="questionType" />
         <label>True or false</label>
       </div>
     </div>
@@ -64,23 +62,22 @@
 <script setup>
   import { ref, reactive } from "@vue/reactivity";
   import { attemptLogin } from "../../utils/api.js";
+  import { getUrl } from "../../utils/triviaApi.js";
+  import {useRouter} from 'vue-router'
 
   const name = ref("");
   const amount = ref("");
   const difficulty = ref("");
   const category = ref("");
   const questionType = ref("");
-
-
-
+  const router = useRouter()
 
   function begin(){
-    console.log(name.value);
-    console.log(amount.value);
-    console.log(difficulty.value);
-    console.log(category.value);
-    console.log(questionType.value);
+    attemptLogin(name.value);
+    getUrl(amount.value, category.value, questionType.value, difficulty.value)
+    //router.push('/questions')
   }
+
 </script>
 
 <style scoped>
