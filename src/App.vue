@@ -10,7 +10,6 @@
 
 <script>
 export default {
-  name: "App",
   created() {
     document.body.style.backgroundColor = "#7D8491";
   },
