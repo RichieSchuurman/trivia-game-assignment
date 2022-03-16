@@ -2,6 +2,7 @@ const apiURL = "https://trivia-assignment.herokuapp.com";
 const apiKey = "8599272a-ba9e-4bb0-9b75-f5ac2c9390c9";
 
 export function attemptLogin(name) {
+  localStorage.setItem("name", name);
   fetch(`${apiURL}/trivia?username=${name}`)
     .then((response) => response.json())
     .then((results) => {
@@ -39,6 +40,11 @@ export function register(name) {
       return newUser;
     })
     .catch((error) => {});
+}
+
+export function updateScore(score){
+  console.log(localStorage.getItem("name"));
+  //fetch(`${apiURL}/trivia?username=${localStorage.getItem("name")}`)
 }
 
 
