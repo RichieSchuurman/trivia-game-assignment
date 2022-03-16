@@ -77,7 +77,7 @@
   function begin(){
     attemptLogin(name.value);
     getUrl(amount.value, category.value, questionType.value, difficulty.value)
-    updateScore(1)
+    updateScore(100)
     //router.push('/questions')
 
     const storedName =localStorage.getItem("name");
