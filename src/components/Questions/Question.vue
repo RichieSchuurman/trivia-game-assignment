@@ -1,5 +1,5 @@
 <template>
-<h4>Single question: {{props.questionProp.question}} </h4>
+<h4>Single question: {{questionProp}} </h4>
 </template>
 
 <script setup>

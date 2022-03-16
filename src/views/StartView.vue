@@ -3,14 +3,13 @@
     <div class="container">
 
     <start/>
-    </div>
     
-      
+     </div>
   </section>
 </template>
 
 <script setup>
-  import start from '../components/start/StartComponent.vue'
+import start from '../components/start/StartComponent.vue'
 </script>
 
 <style scoped>

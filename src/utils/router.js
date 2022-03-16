@@ -5,7 +5,7 @@ import Results from "../views/ResultsView.vue"
 
 const routes = [
     {
-        path: '/start',
+        path: '/',
         name: "Start",
         component: Start
     },
