@@ -3,6 +3,10 @@
     color: #FFFFFF;
 }
 
+p {
+    font-family: 'Raleway', sans-serif;
+}
+
 .main-content-block {
     height: 100vh;
 }
