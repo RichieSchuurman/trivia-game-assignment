@@ -77,16 +77,17 @@
   function begin(){
     attemptLogin(name.value);
     getUrl(amount.value, category.value, questionType.value, difficulty.value)
-    updateScore(100)
-    //router.push('/questions')
+    router.push('/questions')
 
     const storedName =localStorage.getItem("name");
     const storedquestions = JSON.parse(localStorage.getItem("questions"));
     const storedanswers = JSON.parse(localStorage.getItem("correctAnswer"));
     const storedanswersIncorrect = JSON.parse(localStorage.getItem("incorrectAnswer"));
 
+    localStorage.setItem("questionNumber", "0");
+
     console.log(storedName);
-    console.log(storedquestions[0]);
+    console.log(storedquestions[1]);
     console.log(storedanswers[0]);
     console.log(storedanswersIncorrect[0]);
   }

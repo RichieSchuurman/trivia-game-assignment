@@ -63,28 +63,28 @@ export function updateScore(score){
 
 
 //uses id to update current user's highscore with the given score
-fetch(`${apiURL}/trivia/${localStorage.getItem("userId")}`, {
-  method: 'PATCH', // NB: Set method to PATCH
-  headers: {
-      'X-API-Key': apiKey,
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-      // Provide new highScore to add to user with id 1
-      highScore: score  
-  })
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Could not update high score')
-    }
-    return response.json()
-  })
-  .then(updatedUser => {
-    // updatedUser is the user with the Patched data
-  })
-  .catch(error => {
-  })
+// fetch(`${apiURL}/trivia/${localStorage.getItem("userId")}`, {
+//   method: 'PATCH', // NB: Set method to PATCH
+//   headers: {
+//       'X-API-Key': apiKey,
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify({
+//       // Provide new highScore to add to user with id 1
+//       highScore: score  
+//   })
+//   })
+//   .then(response => {
+//     if (!response.ok) {
+//       throw new Error('Could not update high score')
+//     }
+//     return response.json()
+//   })
+//   .then(updatedUser => {
+//     // updatedUser is the user with the Patched data
+//   })
+//   .catch(error => {
+//   })
 
 }
 
