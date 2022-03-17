@@ -39,10 +39,11 @@ const router = useRouter()
 loopTroughQuestions();
 
 function loopTroughQuestions() {
-  if (correctAnswers != undefined) {
+  try{
     let currentQuestionNumber = parseInt(
       localStorage.getItem("questionNumber")
     );
+
     console.log(question[currentQuestionNumber]);
     questionString.value = String(question[currentQuestionNumber]);
 
@@ -64,9 +65,12 @@ function loopTroughQuestions() {
     fourthAnwserString.value = allAnswers[3];
 
     currentQuestionNumber++;
+
     localStorage.setItem("questionNumber", String(currentQuestionNumber));
-  } else {
-      router.push('/results')
   }
+  catch(error){
+        router.push('/results')
+  }
+  
 }
 </script>
