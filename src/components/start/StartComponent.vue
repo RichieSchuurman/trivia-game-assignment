@@ -54,7 +54,6 @@
            <div class="d-grid col-6 mx-auto start-button">
              <button type="button" class="btn btn-primary"  @click="begin">Play game</button>
            </div>
-          
         </form>
       </div>
     </div>
@@ -62,6 +61,8 @@
 </template>
 
 <script setup>
+localStorage.clear();
+
   import { ref, reactive } from "@vue/reactivity";
   import { attemptLogin } from "../../utils/api.js";
   import { updateScore } from "../../utils/api.js";
@@ -77,22 +78,25 @@
   const router = useRouter()
 
   function begin(){
-    attemptLogin(name.value);
-    getUrl(amount.value, category.value, questionType.value, difficulty.value)
-    router.push('/questions')
+    
+    localStorage.setItem("questionNumber", "0");
+    localStorage.setItem("score", "0")
 
-    const storedName =localStorage.getItem("name");
+    getUrl(amount.value, category.value, questionType.value, difficulty.value)
+    attemptLogin(name.value);
+
+    const storedName = localStorage.getItem("name");
     const storedquestions = JSON.parse(localStorage.getItem("questions"));
     const storedanswers = JSON.parse(localStorage.getItem("correctAnswer"));
     const storedanswersIncorrect = JSON.parse(localStorage.getItem("incorrectAnswer"));
 
-    localStorage.setItem("questionNumber", "0");
-    localStorage.setItem("score", "0")
-
     console.log(storedName);
-    console.log(storedquestions[1]);
+    console.log(storedquestions[0]);
     console.log(storedanswers[0]);
     console.log(storedanswersIncorrect[0]);
+
+    router.push('/questions')
+
   }
 
 </script>

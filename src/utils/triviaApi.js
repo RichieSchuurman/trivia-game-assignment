@@ -4,12 +4,12 @@ const baseCategory = "&category=";
 const baseDifficulty = "&difficulty=";
 const baseType = "&type=";
 
-export function getUrl(amount, category, type, difficulty){
+ export async function getUrl(amount, category, type, difficulty){
     const url = `${baseURL}${baseAmount}${amount}${baseCategory}${category}${baseDifficulty}${difficulty}${baseType}${type}`
 
     console.log(url);
 
-    fetch(url)
+    await fetch(url)
     .then(response => response.json())
     .then(data => data.results)
     .then(results => {
@@ -18,11 +18,12 @@ export function getUrl(amount, category, type, difficulty){
         const correctAnswer = results.map(results => results.correct_answer);
         const incorrectAnswer = results.map(results => results.incorrect_answers);
 
-        console.log(question);
-
+        localStorage.setItem("aa", "bb")
+        console.log("blob")
         localStorage.setItem("correctAnswer", JSON.stringify(correctAnswer));
         localStorage.setItem("incorrectAnswer", JSON.stringify(incorrectAnswer));
         localStorage.setItem("questions", JSON.stringify(question));
+
         
     })
 }

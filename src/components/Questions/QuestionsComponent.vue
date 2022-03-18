@@ -15,6 +15,10 @@
   </div>
 </template>
 
+<script>
+let question = JSON.parse(localStorage.getItem("questions"));
+</script>
+
 <script setup>
 import { reactive } from "vue";
 import { shuffle } from "../../utils/shuffle.js";
@@ -27,16 +31,16 @@ let secondAnwserString = reactive({});
 let thirdAnwserString = reactive({});
 let fourthAnwserString = reactive({});
 
-let question = JSON.parse(localStorage.getItem("questions"));
 let correctAnswers = JSON.parse(localStorage.getItem("correctAnswer"));
 let incorrectAnswers = JSON.parse(localStorage.getItem("incorrectAnswer"));
 
 let score = parseInt(localStorage.getItem("score"))
+console.log( "undefined? " +localStorage.getItem("questions"))
 
-    let currentQuestionNumber = parseInt(
-      localStorage.getItem("questionNumber")
-    );
+let currentQuestionNumber = parseInt(localStorage.getItem("questionNumber"));
 let userGivenAnswers= [];
+let allcorrectAnswers = [];
+let resultQuestions = [];
 
 const router = useRouter()
 
@@ -54,6 +58,9 @@ function loopTroughQuestions() {
     let currentIncorrectAnswers = incorrectAnswers[currentQuestionNumber];
 
     allAnswers.push(currentCorrectAnswer);
+    allcorrectAnswers.push(currentCorrectAnswer);
+    resultQuestions.push(questionString.value);
+
 
     currentIncorrectAnswers.forEach((currentIncorrectAnswer) =>
       allAnswers.push(currentIncorrectAnswer)
@@ -76,7 +83,16 @@ function loopTroughQuestions() {
     localStorage.setItem("questionNumber", String(currentQuestionNumber));
   }
   catch(error){
-        console.log(localStorage.getItem("score"))
+    console.log(error)
+
+        localStorage.setItem("resultQuestions", resultQuestions)
+    
+        let givenAnswersArrayStringified = String(userGivenAnswers)
+        localStorage.setItem("userAnswers", givenAnswersArrayStringified);
+
+        let correctAnswersArrayStringified = String(allcorrectAnswers);
+        localStorage.setItem("correctAnswers", correctAnswersArrayStringified);
+
         router.push('/results')
   }
   
@@ -92,6 +108,7 @@ function checkAnswer(answer){
   loopTroughQuestions();
 }
 </script>
+
 
 <style lang="scss" scoped>
 @import "../../utils/main.scss";
