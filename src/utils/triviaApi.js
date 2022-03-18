@@ -1,5 +1,6 @@
 
     export async function getUrl(amount, category, type, difficulty){
+        
         console.log("asd")
         localStorage.setItem("type", type);
       const baseURL = "https://opentdb.com/api.php";
@@ -26,4 +27,5 @@
           localStorage.setItem("questions", JSON.stringify(question));
           
       })
+    
   }

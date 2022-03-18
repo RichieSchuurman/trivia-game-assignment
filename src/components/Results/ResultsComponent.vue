@@ -34,11 +34,14 @@
 </template>
 
 <script setup>
+
 import { reactive } from "vue";
 import {useRouter} from 'vue-router'
+import { updateScore } from "../../utils/api.js";
+
 
 const score = localStorage.getItem("score");
-
+updateScore(parseInt(score))
 const userAnswers = localStorage.getItem("userAnswers");
 const userAnswersArray = userAnswers.split(",");
 
