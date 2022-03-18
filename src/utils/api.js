@@ -51,7 +51,6 @@ export function register(name) {
 
 // Sets local storage id to current user id
 export function updateScore(score){
-  console.log(localStorage.getItem("name"));
 
   fetch(`${apiURL}/trivia/?username=${localStorage.getItem("name")}`)
     .then((response) => response.json())
@@ -61,8 +60,6 @@ export function updateScore(score){
 
         localStorage.setItem("userId", results[0].id)
         localStorage.setItem("highscore", results[0].highScore)
-        console.log(results)
-
       }
     })
     .catch((error) => {});
@@ -74,8 +71,6 @@ export function updateScore(score){
 function updateScoreToDB(score){
 
   const highscoreDB = parseInt(localStorage.getItem("highscore"))
-  console.log(highscoreDB)
-  console.log(score)
 
   if (score > highscoreDB){
 //uses id to update current user's highscore with the given score

@@ -44,7 +44,6 @@ let correctAnswers = JSON.parse(localStorage.getItem("correctAnswer"));
 let incorrectAnswers = JSON.parse(localStorage.getItem("incorrectAnswer"));
 
 let score = parseInt(localStorage.getItem("score"))
-console.log( "undefined? " +localStorage.getItem("questions"))
 
 let currentQuestionNumber = parseInt(localStorage.getItem("questionNumber"));
 
@@ -108,7 +107,6 @@ function loopTroughQuestions() {
 // Check the user answers and add score
 function checkAnswer(answer){
   userGivenAnswers.push(answer);
-  console.log(correctAnswers[currentQuestionNumber - 1])
   if(answer == correctAnswers[currentQuestionNumber - 1]){
     score= score +10
     localStorage.setItem("score", score)

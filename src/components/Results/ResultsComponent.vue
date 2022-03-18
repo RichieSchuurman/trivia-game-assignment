@@ -27,7 +27,7 @@
     <div class="row button-row">
         <div class="col-12 text-center result-buttons">
             <button type="button" class="btn btn-primary" @click="goToStart">Back to start</button>
-            <button type="button" class="btn btn-primary">Play again</button>
+            <button type="button" class="btn btn-primary" @click="playAgain">Play again</button>
         </div>
     </div>
   </div>
@@ -35,9 +35,9 @@
 
 <script setup>
 
-import { reactive } from "vue";
 import {useRouter} from 'vue-router'
 import { updateScore } from "../../utils/api.js";
+  import { getUrl } from "../../utils/triviaApi.js";
 
 // Get the results from the quiz out of localStorage so its reusable in the table
 const score = localStorage.getItem("score");
@@ -55,6 +55,14 @@ const router = useRouter();
 
 function goToStart() {
     router.push('/')
+    localStorage.clear();
+}
+
+function playAgain() {
+  const playSameURL = localStorage.getItem("url");
+  router.push('/questions')
+
+  //TODO - Route correctly from localStorage
 }
 
 </script>

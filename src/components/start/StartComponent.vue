@@ -66,8 +66,6 @@
   import { getUrl } from "../../utils/triviaApi.js";
   import  {useRouter } from 'vue-router'
 
-  localStorage.clear();
-
   // Add ref and router variables
   let name = ref("");
   let amount = ref("");
