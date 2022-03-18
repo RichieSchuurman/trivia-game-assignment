@@ -16,6 +16,8 @@ If you want to run the application on your local machine, clone the repo as norm
 ## Future work
 - Add responsive design for mobile
 
+## Additional Notes 
+Some API calls from the Open Trivia DB will give back empty responses or cause the questions and answers being mixed up in the results table
 ## Build with
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Figma](https://www.figma.com/)
