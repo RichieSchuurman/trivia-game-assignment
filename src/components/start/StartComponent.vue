@@ -6,13 +6,14 @@
     <div class="container">
       <div class="row">
         <form class="select-trivia-options">
-          <label for="nameField">Please enter your name</label>
-          <input class="form-control input-styling" v-model="name" id="nameField" type="text" placeholder="Name">
+          <label class="label-styling" for="nameField">Enter your name</label>
+          <input class="form-control input-styling" v-model="name" id="nameField" type="text" placeholder="Enter your name">
     
-          <label for="amountField">Please enter the amount of question</label>
-          <input type="number" class="form-control input-styling" id="amountField" max=50  placeholder="A number" v-model="amount">
+          <label class="label-styling" for="amountField">Enter the amount of question</label>
+          <input type="number" class="form-control input-styling" id="amountField" max=50  placeholder="Enter the amount" v-model="amount">
 
           <div class="row">
+            <label class="label-styling">Select your difficulty</label>
             <div class = "col">
               <input type="radio" name= "difficulty" class="radio input-styling-radio" value="easy" v-model="difficulty"  />
               <label>Easy</label>
@@ -27,17 +28,19 @@
             </div>
           </div>
 
-          <select class="form-select input-styling" aria-label="Default select example" v-model="category">
-            <option selected>Category</option>
-            <option value="25">Art</option>
-            <option value="23">History</option>
-            <option value="27">Animals</option>
-            <option value="24">Politics</option>
-            <option value="21">Sports</option>
+          <label class="label-styling">Select your category</label>
+          <select class="form-select input-styling" placeholder="Select your category" aria-label="Default select example" v-model="category">
+            <option value="" disabled selected>Select your category</option>
+            <option value="9">General knowledge</option>
+            <option value="11">Film</option>
+            <option value="15">Video games</option>
             <option value="20">Mythology</option>
+            <option value="21">Sports</option>
+            <option value="26">Celebrities</option>
           </select>
 
           <div class="row">
+            <label class="label-styling">Select your question type</label>
             <div class = "col">
               <input type="radio" name= "questionType" class="radio input-styling-radio" value="multiple"  v-model="questionType"  />
               <label>Multiple choice</label>
@@ -48,7 +51,10 @@
             </div>
           </div>
 
-          <button type="button" class="btn btn-primary"  @click="begin">Play game</button>
+           <div class="d-grid col-6 mx-auto start-button">
+             <button type="button" class="btn btn-primary"  @click="begin">Play game</button>
+           </div>
+          
         </form>
       </div>
     </div>

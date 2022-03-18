@@ -6,7 +6,9 @@ h1 { font-size: 32px; }
 h2 { font-size: 24px; }
 h3 { font-size: 18px; }
 h4 { font-size: 16px; }
-p { font-size: 16px; font-family: 'Raleway', sans-serif; }
+p { font-size: 16px;  }
+p, label { font-family: 'Raleway', sans-serif; }
+
 
 #app {
     color: #FFF;
@@ -23,6 +25,27 @@ p { font-size: 16px; font-family: 'Raleway', sans-serif; }
     }
 }
 
+
+.start-button, .question-buttons {
+    .btn {
+        border-radius: 25px;
+        border: none;
+        background-color: #2292A4;
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        
+        &:hover {
+            background-color: #8ED081;
+        } 
+        &:focus {
+            box-shadow: none;
+        }
+        &:visited {
+            box-shadow: none;
+        }
+    }
+}
+
 .question-header, .start-header {
     text-align: center;
     margin: 2rem 0;
@@ -34,14 +57,37 @@ p { font-size: 16px; font-family: 'Raleway', sans-serif; }
 }
 
 .input-styling, .input-styling-radio {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
-.input-styling {
+.select-trivia-options {
     text-align: center;
-    border: none;
-    height: 45px;
-    box-shadow: 0 0 16px rgb(0 0 0 / 50%);
+    width: 65%;
+    margin: 0 auto;
+
+    .label-styling {
+        margin-bottom: 0.5rem;
+    }
+
+    .input-styling { 
+        border: none;
+        height: 40px;
+        box-shadow: 0 0 16px rgb(0 0 0 / 50%);
+        padding: 0;
+    }
+
+    .input-styling-radio {
+        height: 15px;
+        margin-right: 5px;
+        Width: 20px;
+    }
+
+    .start-button {
+        .btn {
+            height: 50px;
+        }
+    }
 }
 
 .show-questions {
@@ -50,22 +96,7 @@ p { font-size: 16px; font-family: 'Raleway', sans-serif; }
     .question-buttons {
         .btn {
             height: 85px;
-            margin-bottom: 2rem;
-            border-radius: 25px;
-            border: none;
-            background-color: #2292A4;
-            font-family: 'Roboto', sans-serif;
-            font-weight: bold;
-
-            &:hover {
-                background-color: #8ED081;
-            } 
-            &:focus {
-                box-shadow: none;
-            }
-            &:visited {
-                box-shadow: none;
-            }
+            margin-bottom: 2rem;           
         }
     }
 }
