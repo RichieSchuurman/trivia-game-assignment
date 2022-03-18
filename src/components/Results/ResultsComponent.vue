@@ -1,48 +1,65 @@
 <template>
-    <header class="results-header">
-
-      <h1>Trivia results</h1>
-      <h2>your score: {{score}}</h2>
-
-      <table class="table table-striped table-dark">
-        <thead>
-            <tr>
+  <header class="results-header">
+    <h1>Trivia results</h1>
+    <h2>your score: {{ score }}</h2>
+  </header>
+  <div class="container">
+    <div class="results-table-container">
+      <table class="table results-table">
+        <thead class="results-table-header">
+          <tr>
             <th scope="col">Question</th>
             <th scope="col">Right Answer</th>
             <th scope="col">your answer</th>
-            </tr>
+          </tr>
         </thead>
         <tbody>
-            <tr v-for="(answer, index) in userAnswersArray">
-                <td> {{questionsArray[index]}}</td>
-                <td>{{correctAnswersArray[index]}}</td>
-                <td>{{answer}}</td>
-            </tr>
+          <tr class="results-table-content" v-for="(answer, index) in userAnswersArray">
+            <td class="questions-column">{{ questionsArray[index] }}</td>
+            <td class="correct-answer-column">{{ correctAnswersArray[index] }}</td>
+            <td class="user-answer-column" :class="
+                {correctColor: answer == correctAnswersArray[index], incorrectColor: answer != correctAnswersArray[index]}">
+                {{ answer }}</td>
+          </tr>
         </tbody>
-    </table>
-    </header>
-    <br>
+      </table>
+    </div>
+    <div class="row button-row">
+        <div class="col-12 text-center result-buttons">
+            <button type="button" class="btn btn-primary" @click="goToStart">Back to start</button>
+            <button type="button" class="btn btn-primary">Play again</button>
+        </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
-    import { reactive } from "vue";
+import { reactive } from "vue";
+import {useRouter} from 'vue-router'
 
-    const score = localStorage.getItem("score")
+const score = localStorage.getItem("score");
 
-    const userAnswers = localStorage.getItem("userAnswers")
-    const userAnswersArray = userAnswers.split(",");
+const userAnswers = localStorage.getItem("userAnswers");
+const userAnswersArray = userAnswers.split(",");
 
-    const correctAnswers = localStorage.getItem("correctAnswers")
-    const correctAnswersArray = correctAnswers.split(",");
+const correctAnswers = localStorage.getItem("correctAnswers");
+const correctAnswersArray = correctAnswers.split(",");
 
-    const questions = localStorage.getItem("resultQuestions")
-    const questionsArray = questions.split(",");
+const questions = localStorage.getItem("resultQuestions");
+const questionsArray = questions.split(",");
 
-    console.log(localStorage.getItem("questionNumber"))
+console.log(localStorage.getItem("questionNumber"));
 
+const router = useRouter();
+
+function goToStart() {
+    router.push('/')
+
+    console.log("button is pushed");
+}
 
 </script>
 
 <style lang="scss" scoped>
-    @import "../../utils/main.scss";
+@import "../../utils/main.scss";
 </style>

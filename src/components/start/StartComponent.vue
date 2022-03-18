@@ -61,14 +61,14 @@
 </template>
 
 <script setup>
-localStorage.clear();
-
   import { ref, reactive } from "@vue/reactivity";
   import { attemptLogin } from "../../utils/api.js";
   import { updateScore } from "../../utils/api.js";
   import { getUrl } from "../../utils/triviaApi.js";
   
   import {useRouter} from 'vue-router'
+
+  localStorage.clear();
 
   const name = ref("");
   const amount = ref("");
@@ -91,9 +91,9 @@ localStorage.clear();
     const storedanswersIncorrect = JSON.parse(localStorage.getItem("incorrectAnswer"));
 
     console.log(storedName);
-    console.log(storedquestions[0]);
-    console.log(storedanswers[0]);
-    console.log(storedanswersIncorrect[0]);
+    console.log(storedquestions);
+    console.log(storedanswers);
+    console.log(storedanswersIncorrect);
 
     router.push('/questions')
 

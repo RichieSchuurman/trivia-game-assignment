@@ -25,8 +25,19 @@ p, label { font-family: 'Raleway', sans-serif; }
     }
 }
 
+.start-button, .result-buttons {
+    .btn {
+        height: 50px;  
+    }
+}
 
-.start-button, .question-buttons {
+.result-buttons .btn{
+    margin: 25px;
+    width: 35%;
+}
+
+
+.start-button, .question-buttons, .result-buttons {
     .btn {
         border-radius: 25px;
         border: none;
@@ -82,12 +93,6 @@ p, label { font-family: 'Raleway', sans-serif; }
         margin-right: 5px;
         Width: 20px;
     }
-
-    .start-button {
-        .btn {
-            height: 50px;
-        }
-    }
 }
 
 .show-questions {
@@ -99,5 +104,73 @@ p, label { font-family: 'Raleway', sans-serif; }
             margin-bottom: 2rem;           
         }
     }
+}
+
+// Custom scrollbar
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #7D8491; 
+    border-radius: 10px;
+  }
+
+  .correctColor {
+      background-color: #8ED081;
+  }
+
+  .incorrectColor {
+      background-color: #EF3E36;
+  }
+
+
+// Table styling
+.results-table-container {
+    height: 341px;
+    width: 88%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0 auto;
+
+    .results-table {
+        color: #FFF;
+
+        .results-table-header {
+            background-color: #2292A4;
+            
+            th {
+                border: 2px solid #FFF;
+            }
+        }
+
+        .results-table-content {
+            
+            td {
+                border: 2px solid #FFF;
+            }
+
+            .questions-column {
+                background-color: #7D8491;
+            }
+
+            .correct-answer-column {
+                background-color: #8ED081;
+            }
+        }
+    }
+}
+
+.button-row {
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
