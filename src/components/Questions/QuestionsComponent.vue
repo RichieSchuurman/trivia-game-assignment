@@ -16,7 +16,6 @@
 </template>
 
 <script>
-let question = JSON.parse(localStorage.getItem("questions"));
 </script>
 
 <script setup>
@@ -24,6 +23,8 @@ import { reactive } from "vue";
 import { shuffle } from "../../utils/shuffle.js";
 import {useRouter} from 'vue-router'
 
+let question = JSON.parse(localStorage.getItem("questions"));
+console.log(question)
 let questionString = reactive({});
 let questionNumberString = reactive({});
 let firstAnwserString = reactive({});
@@ -47,14 +48,17 @@ const router = useRouter()
 loopTroughQuestions();
 
 function loopTroughQuestions() {
+      console.log(String(question[0]))
+
   try{
-    
+
     questionString.value = String(question[currentQuestionNumber]);
     questionNumberString.value = (currentQuestionNumber);
 
     let allAnswers = [];
 
-    let currentCorrectAnswer = correctAnswers[currentQuestionNumber];
+    let currentCorrectAnswer = correctAnswers[(currentQuestionNumber)];
+    
     let currentIncorrectAnswers = incorrectAnswers[currentQuestionNumber];
 
     allAnswers.push(currentCorrectAnswer);

@@ -65,9 +65,9 @@
   import { attemptLogin } from "../../utils/api.js";
   import { updateScore } from "../../utils/api.js";
   import { getUrl } from "../../utils/triviaApi.js";
-  
   import {useRouter} from 'vue-router'
 
+<<<<<<< HEAD
   localStorage.clear();
 
   const name = ref("");
@@ -75,17 +75,26 @@
   const difficulty = ref("");
   const category = ref("");
   const questionType = ref("");
+=======
+  let name = ref("");
+  let amount = ref("")
+  let difficulty = ref("")
+  let category = ref("");
+  let questionType = ref("")
+>>>>>>> DisplayResultData
   const router = useRouter()
 
   function begin(){
     
-    localStorage.setItem("questionNumber", "0");
+    localStorage.setItem("questionNumber", "0")
     localStorage.setItem("score", "0")
+
 
     getUrl(amount.value, category.value, questionType.value, difficulty.value)
     attemptLogin(name.value);
 
     const storedName = localStorage.getItem("name");
+<<<<<<< HEAD
     const storedquestions = JSON.parse(localStorage.getItem("questions"));
     const storedanswers = JSON.parse(localStorage.getItem("correctAnswer"));
     const storedanswersIncorrect = JSON.parse(localStorage.getItem("incorrectAnswer"));
@@ -95,11 +104,19 @@
     console.log(storedanswers);
     console.log(storedanswersIncorrect);
 
-    router.push('/questions')
-
+=======
+    const storedquestions = JSON.parse(localStorage.getItem("questions"))
+    const storedanswers = JSON.parse(localStorage.getItem("correctAnswer"))
+    const storedanswersIncorrect = JSON.parse(localStorage.getItem("incorrectAnswer"))
+    const myTimeout = setTimeout(routeToQuestions, 2000);
   }
-
+function routeToQuestions(){
+>>>>>>> DisplayResultData
+    router.push('/questions')
+}
 </script>
+
+
 
 <style lang="scss" scoped>
   @import "../../utils/main.scss";
