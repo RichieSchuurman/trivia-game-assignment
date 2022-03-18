@@ -6,10 +6,10 @@
   <div class="container">
     <div class="show-questions">
       <div class="d-grid gap-2 col-12 mx-auto question-buttons">
-        <button type="button" class="btn btn-primary" @click="loopTroughQuestions"> {{ firstAnwserString.value }} </button>
-        <button type="button" class="btn btn-primary" @click="loopTroughQuestions"> {{ secondAnwserString.value }} </button>
-        <button type="button" class="btn btn-primary" @click="loopTroughQuestions"> {{ thirdAnwserString.value }} </button>
-        <button type="button" class="btn btn-primary" @click="loopTroughQuestions"> {{ fourthAnwserString.value }} </button>
+        <button type="button" class="btn btn-primary" @click="checkAnswer(firstAnwserString.value)"> {{ firstAnwserString.value }} </button>
+        <button type="button" class="btn btn-primary" @click="checkAnswer(secondAnwserString.value)"> {{ secondAnwserString.value }} </button>
+        <button type="button" class="btn btn-primary" @click="checkAnswer(thirdAnwserString.value)"> {{ thirdAnwserString.value }} </button>
+        <button type="button" class="btn btn-primary" @click="checkAnswer(fourthAnwserString.value)"> {{ fourthAnwserString.value }} </button>
       </div>
     </div>
   </div>
@@ -31,15 +31,19 @@ let question = JSON.parse(localStorage.getItem("questions"));
 let correctAnswers = JSON.parse(localStorage.getItem("correctAnswer"));
 let incorrectAnswers = JSON.parse(localStorage.getItem("incorrectAnswer"));
 
+let score = parseInt(localStorage.getItem("score"))
+
+    let currentQuestionNumber = parseInt(
+      localStorage.getItem("questionNumber")
+    );
+let userGivenAnswers= [];
+
 const router = useRouter()
 
 loopTroughQuestions();
 
 function loopTroughQuestions() {
   try{
-    let currentQuestionNumber = parseInt(
-      localStorage.getItem("questionNumber")
-    );
     
     questionString.value = String(question[currentQuestionNumber]);
     questionNumberString.value = (currentQuestionNumber);
@@ -72,9 +76,20 @@ function loopTroughQuestions() {
     localStorage.setItem("questionNumber", String(currentQuestionNumber));
   }
   catch(error){
+        console.log(localStorage.getItem("score"))
         router.push('/results')
   }
   
+}
+
+function checkAnswer(answer){
+  userGivenAnswers.push(answer);
+  console.log(correctAnswers[currentQuestionNumber - 1])
+  if(answer == correctAnswers[currentQuestionNumber - 1]){
+    score= score +10
+    localStorage.setItem("score", score)
+  }
+  loopTroughQuestions();
 }
 </script>
 

@@ -81,6 +81,7 @@
     const storedanswersIncorrect = JSON.parse(localStorage.getItem("incorrectAnswer"));
 
     localStorage.setItem("questionNumber", "0");
+    localStorage.setItem("score", "0")
 
     console.log(storedName);
     console.log(storedquestions[1]);
