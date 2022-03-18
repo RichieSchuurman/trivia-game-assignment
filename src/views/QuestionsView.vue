@@ -1,16 +1,9 @@
 <template>
   <section id="questions">
-    <div class="container">
-      <Questions/>
-    </div>
-      
+      <QuestionsComponent/>  
   </section>
 </template>
 
 <script setup>
-
-import Questions from '../components/Questions/Questions.vue'
+  import QuestionsComponent from '../components/Questions/QuestionsComponent.vue'
 </script>
-
-<style>
-</style>

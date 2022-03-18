@@ -1,20 +1,16 @@
 <template>
-  <h4>Question header</h4>
+<header class="question-header">
+  <h2>Question {{ questionNumberString.value +1 }}</h2>
+  <p class="question-text"> {{ questionString.value }} </p>
+</header>
   <div class="container">
-    <div id="question" class="show-questions">
-      {{ questionString.value }}
-
-      <button
-        type="button"
-        class="btn btn-primary"
-        @click="loopTroughQuestions"
-      >
-        Next question
-      </button>
-      {{ firstAnwserString.value }}
-      {{ secondAnwserString.value }}
-      {{ thirdAnwserString.value }}
-      {{ fourthAnwserString.value }}
+    <div class="show-questions">
+      <div class="d-grid gap-2 col-12 mx-auto question-buttons">
+        <button type="button" class="btn btn-primary" @click="loopTroughQuestions"> {{ firstAnwserString.value }} </button>
+        <button type="button" class="btn btn-primary" @click="loopTroughQuestions"> {{ secondAnwserString.value }} </button>
+        <button type="button" class="btn btn-primary" @click="loopTroughQuestions"> {{ thirdAnwserString.value }} </button>
+        <button type="button" class="btn btn-primary" @click="loopTroughQuestions"> {{ fourthAnwserString.value }} </button>
+      </div>
     </div>
   </div>
 </template>
@@ -25,6 +21,7 @@ import { shuffle } from "../../utils/shuffle.js";
 import {useRouter} from 'vue-router'
 
 let questionString = reactive({});
+let questionNumberString = reactive({});
 let firstAnwserString = reactive({});
 let secondAnwserString = reactive({});
 let thirdAnwserString = reactive({});
@@ -43,9 +40,9 @@ function loopTroughQuestions() {
     let currentQuestionNumber = parseInt(
       localStorage.getItem("questionNumber")
     );
-
-    console.log(question[currentQuestionNumber]);
+    
     questionString.value = String(question[currentQuestionNumber]);
+    questionNumberString.value = (currentQuestionNumber);
 
     let allAnswers = [];
 
@@ -64,6 +61,12 @@ function loopTroughQuestions() {
     thirdAnwserString.value = allAnswers[2];
     fourthAnwserString.value = allAnswers[3];
 
+    //Debug logs
+    console.log(currentQuestionNumber);
+    console.log(question[currentQuestionNumber]);
+    console.log(currentCorrectAnswer); 
+    console.log(currentIncorrectAnswers);
+
     currentQuestionNumber++;
 
     localStorage.setItem("questionNumber", String(currentQuestionNumber));
@@ -74,3 +77,7 @@ function loopTroughQuestions() {
   
 }
 </script>
+
+<style lang="scss" scoped>
+@import "../../utils/main.scss";
+</style>

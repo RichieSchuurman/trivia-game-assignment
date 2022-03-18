@@ -16,6 +16,6 @@ export default {
 };
 </script>
 
-<style scoped>
- @import "./utils/main.css";
+<style lang="scss" scoped>
+@import "./utils/main.scss";
 </style>
