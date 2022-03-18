@@ -63,7 +63,6 @@
 <script setup>
   import { ref, reactive } from "@vue/reactivity";
   import { attemptLogin } from "../../utils/api.js";
-  import { updateScore } from "../../utils/api.js";
   import { getUrl } from "../../utils/triviaApi.js";
   import  {useRouter } from 'vue-router'
 
@@ -90,9 +89,7 @@
     const storedquestions = JSON.parse(localStorage.getItem("questions"));
     const storedanswers = JSON.parse(localStorage.getItem("correctAnswer"));
     const storedanswersIncorrect = JSON.parse(localStorage.getItem("incorrectAnswer"));
-
     const myTimeout = setTimeout(routeToQuestions, 500);
-
   }
   function routeToQuestions(){
     router.push('/questions')

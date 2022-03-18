@@ -51,43 +51,57 @@ export function register(name) {
 
 // Sets local storage id to current user id
 export function updateScore(score){
+  console.log(localStorage.getItem("name"));
+
   fetch(`${apiURL}/trivia/?username=${localStorage.getItem("name")}`)
     .then((response) => response.json())
     .then((results) => {
 
-      if (results.length == 0) {
+      if (results.length == 1) {
 
         localStorage.setItem("userId", results[0].id)
-        
+        localStorage.setItem("highscore", results[0].highScore)
+        console.log(results)
+
       }
     })
     .catch((error) => {});
+    const myTimeout = setTimeout(updateScoreToDB(score), 2000)
+    setTimeout(function() {
+      updateScoreToDB(score);
+  }, 700)
+}
+function updateScoreToDB(score){
 
+  const highscoreDB = parseInt(localStorage.getItem("highscore"))
+  console.log(highscoreDB)
+  console.log(score)
 
+  if (score > highscoreDB){
 //uses id to update current user's highscore with the given score
-// fetch(`${apiURL}/trivia/${localStorage.getItem("userId")}`, {
-//   method: 'PATCH', // NB: Set method to PATCH
-//   headers: {
-//       'X-API-Key': apiKey,
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify({
-//       // Provide new highScore to add to user with id 1
-//       highScore: score  
-//   })
-//   })
-//   .then(response => {
-//     if (!response.ok) {
-//       throw new Error('Could not update high score')
-//     }
-//     return response.json()
-//   })
-//   .then(updatedUser => {
-//     // updatedUser is the user with the Patched data
-//   })
-//   .catch(error => {
-//   })
-
+  fetch(`${apiURL}/trivia/${localStorage.getItem("userId")}`, {
+    method: 'PATCH', // NB: Set method to PATCH
+    headers: {
+        'X-API-Key': apiKey,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        // Provide new highScore to add to user with id 1
+        highScore: score  
+    })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Could not update high score')
+      }
+      return response.json()
+    })
+    .then(updatedUser => {
+      // updatedUser is the user with the Patched data
+    })
+    .catch(error => {
+    })    
+  }
 }
 
 

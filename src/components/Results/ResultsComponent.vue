@@ -34,12 +34,14 @@
 </template>
 
 <script setup>
+
 import { reactive } from "vue";
 import {useRouter} from 'vue-router'
-
-const score = localStorage.getItem("score");
+import { updateScore } from "../../utils/api.js";
 
 // Get the results from the quiz out of localStorage so its reusable in the table
+const score = localStorage.getItem("score");
+updateScore(parseInt(score))
 const userAnswers = localStorage.getItem("userAnswers");
 const userAnswersArray = userAnswers.split(",");
 
