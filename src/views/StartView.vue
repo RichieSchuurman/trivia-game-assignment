@@ -1,10 +1,8 @@
  <template>
   <section id="start">
-    <div class="container">
 
     <start/>
     
-     </div>
   </section>
 </template>
 

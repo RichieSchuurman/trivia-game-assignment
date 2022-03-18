@@ -23,11 +23,25 @@ p { font-size: 16px; font-family: 'Raleway', sans-serif; }
     }
 }
 
-.question-header {
+.question-header, .start-header {
     text-align: center;
     margin: 2rem 0;
     padding: 0 2rem;
+}
+
+.question-header {
     border-bottom: 1px solid #FFF;
+}
+
+.input-styling, .input-styling-radio {
+    margin-bottom: 3rem;
+}
+
+.input-styling {
+    text-align: center;
+    border: none;
+    height: 45px;
+    box-shadow: 0 0 16px rgb(0 0 0 / 50%);
 }
 
 .show-questions {
