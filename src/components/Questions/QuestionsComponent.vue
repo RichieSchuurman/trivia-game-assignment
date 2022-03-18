@@ -27,14 +27,9 @@
 <script setup>
 import { reactive } from "vue";
 import { shuffle } from "../../utils/shuffle.js";
-import {useRouter} from 'vue-router'
+import { useRouter } from 'vue-router'
 
-let questionType = localStorage.getItem("type");
-
-console.log(questionType);
-
-let question = JSON.parse(localStorage.getItem("questions"));
-console.log(question)
+// Add reactive variables
 let questionString = reactive({});
 let questionNumberString = reactive({});
 let firstAnwserString = reactive({});
@@ -42,6 +37,9 @@ let secondAnwserString = reactive({});
 let thirdAnwserString = reactive({});
 let fourthAnwserString = reactive({});
 
+// Get the different variables out of localStorage to be reused
+let question = JSON.parse(localStorage.getItem("questions"));
+let questionType = localStorage.getItem("type");
 let correctAnswers = JSON.parse(localStorage.getItem("correctAnswer"));
 let incorrectAnswers = JSON.parse(localStorage.getItem("incorrectAnswer"));
 
@@ -49,6 +47,8 @@ let score = parseInt(localStorage.getItem("score"))
 console.log( "undefined? " +localStorage.getItem("questions"))
 
 let currentQuestionNumber = parseInt(localStorage.getItem("questionNumber"));
+
+// Declare different empty arrays to later fill with localStorage
 let userGivenAnswers= [];
 let allcorrectAnswers = [];
 let resultQuestions = [];
@@ -57,18 +57,15 @@ const router = useRouter()
 
 loopTroughQuestions();
 
+// As the quiz goes on you're looping through the amount of given questions
 function loopTroughQuestions() {
-      console.log(String(question[0]))
-
   try{
 
     questionString.value = String(question[currentQuestionNumber]);
     questionNumberString.value = (currentQuestionNumber);
 
     let allAnswers = [];
-
     let currentCorrectAnswer = correctAnswers[(currentQuestionNumber)];
-    
     let currentIncorrectAnswers = incorrectAnswers[currentQuestionNumber];
 
     allAnswers.push(currentCorrectAnswer);
@@ -81,24 +78,20 @@ function loopTroughQuestions() {
     );
     allAnswers = shuffle(allAnswers);
 
+    // After filling the AllAnswers array with the correct and incorrect answers and shuffling them
+    // The different reactives are given a value to be reused for the buttons.
     firstAnwserString.value = allAnswers[0];
     secondAnwserString.value = allAnswers[1];
     thirdAnwserString.value = allAnswers[2];
     fourthAnwserString.value = allAnswers[3];
-
-    //Debug logs
-    console.log(currentQuestionNumber);
-    console.log(question[currentQuestionNumber]);
-    console.log(currentCorrectAnswer); 
-    console.log(currentIncorrectAnswers);
 
     currentQuestionNumber++;
 
     localStorage.setItem("questionNumber", String(currentQuestionNumber));
   }
   catch(error){
-    console.log(error)
-
+        // When you run out of questions you'll be redirected to the results page
+        // Where the different questions and answers are set in localstorage
         localStorage.setItem("resultQuestions", resultQuestions)
     
         let givenAnswersArrayStringified = String(userGivenAnswers)
@@ -112,6 +105,7 @@ function loopTroughQuestions() {
   
 }
 
+// Check the user answers and add score
 function checkAnswer(answer){
   userGivenAnswers.push(answer);
   console.log(correctAnswers[currentQuestionNumber - 1])

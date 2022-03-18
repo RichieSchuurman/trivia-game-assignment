@@ -2,6 +2,7 @@
 const apiURL = "https://trivia-assignment.herokuapp.com";
 const apiKey = "8599272a-ba9e-4bb0-9b75-f5ac2c9390c9";
 
+// Sets localstorage for user to be used throughout the application
 export function attemptLogin(name) {
   localStorage.setItem("name", name);
   fetch(`${apiURL}/trivia?username=${name}`)
@@ -23,6 +24,7 @@ export function attemptLogin(name) {
     .catch((error) => {});
 }
 
+// Creates new user
 export function register(name) {
   fetch(`${apiURL}/trivia`, {
     method: "POST",
@@ -47,8 +49,8 @@ export function register(name) {
     .catch((error) => {});
 }
 
+// Sets local storage id to current user id
 export function updateScore(score){
-  //setts local storage id to current user id
   fetch(`${apiURL}/trivia/?username=${localStorage.getItem("name")}`)
     .then((response) => response.json())
     .then((results) => {

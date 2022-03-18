@@ -1,7 +1,31 @@
-# Vue 3 + Vite
+# Trivia Assigment
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## About the assignment
+For this assignment we build a trivia game with Vue and Vite. Questions are provided by the open source API from Open Trivia DB and userData(id, username, highscore) is saved in the noroff-assignment-api
+With this trivia game you're able to:
+- Store your username and highscore.
+- Select your own questions by giving the amount, difficulty, type, and category.
+- Check your score and match your answers in the provided table
 
-## Recommended IDE Setup
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+## How to use
+This application is deployed with Heroku so you're able to directly access it with following link [Trivia Game]() or click on the heroku badge above.
+
+If you want to run the application on your local machine, clone the repo as normal and follow bellow steps.
+
+## Future work
+- Add responsive design for mobile
+
+## Build with
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Figma](https://www.figma.com/)
+- [Vue.js](https://vuejs.org/)
+- [Vite](https://vitejs.dev/)
+- [VueRouter](https://router.vuejs.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Open Trivia DB](https://opentdb.com/)
+- [noroff-assignment-api](https://github.com/dewald-els/noroff-assignment-api)
+
+## Credits
+[Richie Schuurman](https://github.com/RichieSchuurman)
+[Mehmet Balci](https://github.com/mehmet70)

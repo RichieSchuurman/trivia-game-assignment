@@ -65,17 +65,17 @@
   import { attemptLogin } from "../../utils/api.js";
   import { updateScore } from "../../utils/api.js";
   import { getUrl } from "../../utils/triviaApi.js";
-  import {useRouter} from 'vue-router'
+  import  {useRouter } from 'vue-router'
 
   localStorage.clear();
 
-
-  const router = useRouter()
+  // Add ref and router variables
   let name = ref("");
   let amount = ref("");
   let difficulty = ref("");
   let category = ref("");
   let questionType = ref("");
+  const router = useRouter()
 
   function begin(){
 
@@ -85,6 +85,7 @@
     getUrl(amount.value, category.value, questionType.value, difficulty.value)
     attemptLogin(name.value);
 
+    // Get localStorage items to be passed through the application
     const storedName = localStorage.getItem("name");
     const storedquestions = JSON.parse(localStorage.getItem("questions"));
     const storedanswers = JSON.parse(localStorage.getItem("correctAnswer"));

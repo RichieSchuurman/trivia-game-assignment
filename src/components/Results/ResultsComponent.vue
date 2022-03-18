@@ -39,6 +39,7 @@ import {useRouter} from 'vue-router'
 
 const score = localStorage.getItem("score");
 
+// Get the results from the quiz out of localStorage so its reusable in the table
 const userAnswers = localStorage.getItem("userAnswers");
 const userAnswersArray = userAnswers.split(",");
 
@@ -47,8 +48,6 @@ const correctAnswersArray = correctAnswers.split(",");
 
 const questions = localStorage.getItem("resultQuestions");
 const questionsArray = questions.split(",");
-
-console.log(localStorage.getItem("questionNumber"));
 
 const router = useRouter();
 

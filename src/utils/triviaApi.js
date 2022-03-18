@@ -1,16 +1,14 @@
-
+    // Builds URL
     export async function getUrl(amount, category, type, difficulty){
-        console.log("asd")
-        localStorage.setItem("type", type);
+      localStorage.setItem("type", type);
       const baseURL = "https://opentdb.com/api.php";
       const baseAmount = "?amount=";
       const baseCategory = "&category=";
       const baseDifficulty = "&difficulty=";
       const baseType = "&type=";
       const url = `${baseURL}${baseAmount}${amount}${baseCategory}${category}${baseDifficulty}${difficulty}${baseType}${type}`
-  
-      console.log(url);
-  
+    
+      // Gets url, maps through the different questions and answers, setting them in localStorage to be used later in the application.
       await fetch(url)
       .then( response => response.json())
       .then( data => data.results )
