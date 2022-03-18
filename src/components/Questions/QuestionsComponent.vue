@@ -5,12 +5,18 @@
 </header>
   <div class="container">
     <div class="show-questions">
-      <div class="d-grid gap-2 col-12 mx-auto question-buttons">
+      <div v-if="questionType === 'multiple'" class="d-grid gap-2 col-12 mx-auto question-buttons">
         <button type="button" class="btn btn-primary" @click="checkAnswer(firstAnwserString.value)"> {{ firstAnwserString.value }} </button>
         <button type="button" class="btn btn-primary" @click="checkAnswer(secondAnwserString.value)"> {{ secondAnwserString.value }} </button>
         <button type="button" class="btn btn-primary" @click="checkAnswer(thirdAnwserString.value)"> {{ thirdAnwserString.value }} </button>
         <button type="button" class="btn btn-primary" @click="checkAnswer(fourthAnwserString.value)"> {{ fourthAnwserString.value }} </button>
       </div>
+
+      <div v-if="questionType === 'boolean'" class="d-grid gap-2 col-12 mx-auto question-buttons">
+        <button type="button" class="btn btn-primary" @click="checkAnswer(firstAnwserString.value)"> {{ firstAnwserString.value }} </button>
+        <button type="button" class="btn btn-primary" @click="checkAnswer(secondAnwserString.value)"> {{ secondAnwserString.value }} </button>
+      </div>
+
     </div>
   </div>
 </template>
@@ -22,6 +28,10 @@
 import { reactive } from "vue";
 import { shuffle } from "../../utils/shuffle.js";
 import {useRouter} from 'vue-router'
+
+let questionType = localStorage.getItem("type");
+
+console.log(questionType);
 
 let question = JSON.parse(localStorage.getItem("questions"));
 console.log(question)

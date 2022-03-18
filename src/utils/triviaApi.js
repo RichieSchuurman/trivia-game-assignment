@@ -1,6 +1,7 @@
 
     export async function getUrl(amount, category, type, difficulty){
         console.log("asd")
+        localStorage.setItem("type", type);
       const baseURL = "https://opentdb.com/api.php";
       const baseAmount = "?amount=";
       const baseCategory = "&category=";

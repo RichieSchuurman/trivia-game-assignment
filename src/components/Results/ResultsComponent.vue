@@ -54,8 +54,6 @@ const router = useRouter();
 
 function goToStart() {
     router.push('/')
-
-    console.log("button is pushed");
 }
 
 </script>

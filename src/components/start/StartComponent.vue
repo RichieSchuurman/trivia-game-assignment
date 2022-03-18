@@ -65,8 +65,9 @@
   import { attemptLogin } from "../../utils/api.js";
   import { updateScore } from "../../utils/api.js";
   import { getUrl } from "../../utils/triviaApi.js";
-  
   import {useRouter} from 'vue-router'
+
+  localStorage.clear();
 
 
   const router = useRouter()
@@ -77,7 +78,6 @@
   let questionType = ref("");
 
   function begin(){
-    localStorage.clear();
 
     localStorage.setItem("questionNumber", "0");
     localStorage.setItem("score", "0")
@@ -90,7 +90,7 @@
     const storedanswers = JSON.parse(localStorage.getItem("correctAnswer"));
     const storedanswersIncorrect = JSON.parse(localStorage.getItem("incorrectAnswer"));
 
-    const myTimeout = setTimeout(routeToQuestions, 2000);
+    const myTimeout = setTimeout(routeToQuestions, 500);
 
   }
   function routeToQuestions(){
