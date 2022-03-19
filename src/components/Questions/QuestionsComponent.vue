@@ -44,6 +44,7 @@ let fourthAnwserString = reactive({});
 
 let correctAnswers = JSON.parse(localStorage.getItem("correctAnswer"));
 let incorrectAnswers = JSON.parse(localStorage.getItem("incorrectAnswer"));
+console.log("incorrect" + incorrectAnswers)
 
 let score = parseInt(localStorage.getItem("score"))
 console.log( "undefined? " +localStorage.getItem("questions"))
@@ -58,8 +59,6 @@ const router = useRouter()
 loopTroughQuestions();
 
 function loopTroughQuestions() {
-      console.log(String(question[0]))
-
   try{
 
     questionString.value = String(question[currentQuestionNumber]);
@@ -70,6 +69,8 @@ function loopTroughQuestions() {
     let currentCorrectAnswer = correctAnswers[(currentQuestionNumber)];
     
     let currentIncorrectAnswers = incorrectAnswers[currentQuestionNumber];
+
+    console.log(currentQuestionNumber)
 
     allAnswers.push(currentCorrectAnswer);
     allcorrectAnswers.push(currentCorrectAnswer);
@@ -97,7 +98,7 @@ function loopTroughQuestions() {
     localStorage.setItem("questionNumber", String(currentQuestionNumber));
   }
   catch(error){
-    console.log(error)
+    console.log("out of questions")
 
         localStorage.setItem("resultQuestions", resultQuestions)
     

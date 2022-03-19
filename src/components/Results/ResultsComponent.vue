@@ -27,7 +27,7 @@
     <div class="row button-row">
         <div class="col-12 text-center result-buttons">
             <button type="button" class="btn btn-primary" @click="goToStart">Back to start</button>
-            <button type="button" class="btn btn-primary">Play again</button>
+            <button type="button" class="btn btn-primary" @click="restartSameCategory">Play again</button>
         </div>
     </div>
   </div>
@@ -38,6 +38,8 @@
 import { reactive } from "vue";
 import {useRouter} from 'vue-router'
 import { updateScore } from "../../utils/api.js";
+import { restart } from "../../utils/triviaApi.js";
+
 
 
 const score = localStorage.getItem("score");
@@ -57,6 +59,18 @@ const router = useRouter();
 
 function goToStart() {
     router.push('/')
+}
+
+function restartSameCategory(){
+
+
+  restart(localStorage.getItem("url"))
+  const myTimeout = setTimeout(routeToQuestions, 500);
+
+}
+
+function routeToQuestions(){
+  router.push('/questions')
 }
 
 </script>
