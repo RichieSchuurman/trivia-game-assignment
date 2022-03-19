@@ -27,9 +27,8 @@
 <script setup>
 import { reactive } from "vue";
 import { shuffle } from "../../utils/shuffle.js";
-import { useRouter } from 'vue-router'
+import {useRouter} from 'vue-router'
 
-// Add reactive variables
 let questionString = reactive({});
 let questionNumberString = reactive({});
 let firstAnwserString = reactive({});
@@ -37,17 +36,13 @@ let secondAnwserString = reactive({});
 let thirdAnwserString = reactive({});
 let fourthAnwserString = reactive({});
 
-// Get the different variables out of localStorage to be reused
-let question = JSON.parse(localStorage.getItem("questions"));
 let questionType = localStorage.getItem("type");
+let question = JSON.parse(localStorage.getItem("questions"));
 let correctAnswers = JSON.parse(localStorage.getItem("correctAnswer"));
 let incorrectAnswers = JSON.parse(localStorage.getItem("incorrectAnswer"));
-
 let score = parseInt(localStorage.getItem("score"))
-
 let currentQuestionNumber = parseInt(localStorage.getItem("questionNumber"));
 
-// Declare different empty arrays to later fill with localStorage
 let userGivenAnswers= [];
 let allcorrectAnswers = [];
 let resultQuestions = [];
@@ -56,7 +51,6 @@ const router = useRouter()
 
 loopTroughQuestions();
 
-// As the quiz goes on you're looping through the amount of given questions
 function loopTroughQuestions() {
   try{
 
@@ -64,7 +58,9 @@ function loopTroughQuestions() {
     questionNumberString.value = (currentQuestionNumber);
 
     let allAnswers = [];
+
     let currentCorrectAnswer = correctAnswers[(currentQuestionNumber)];
+    
     let currentIncorrectAnswers = incorrectAnswers[currentQuestionNumber];
 
     allAnswers.push(currentCorrectAnswer);
@@ -77,8 +73,6 @@ function loopTroughQuestions() {
     );
     allAnswers = shuffle(allAnswers);
 
-    // After filling the AllAnswers array with the correct and incorrect answers and shuffling them
-    // The different reactives are given a value to be reused for the buttons.
     firstAnwserString.value = allAnswers[0];
     secondAnwserString.value = allAnswers[1];
     thirdAnwserString.value = allAnswers[2];
@@ -89,8 +83,7 @@ function loopTroughQuestions() {
     localStorage.setItem("questionNumber", String(currentQuestionNumber));
   }
   catch(error){
-        // When you run out of questions you'll be redirected to the results page
-        // Where the different questions and answers are set in localstorage
+
         localStorage.setItem("resultQuestions", resultQuestions)
     
         let givenAnswersArrayStringified = String(userGivenAnswers)
@@ -101,10 +94,8 @@ function loopTroughQuestions() {
 
         router.push('/results')
   }
-  
 }
 
-// Check the user answers and add score
 function checkAnswer(answer){
   userGivenAnswers.push(answer);
   if(answer == correctAnswers[currentQuestionNumber - 1]){
