@@ -28,6 +28,7 @@
 import { reactive } from "vue";
 import { shuffle } from "../../utils/shuffle.js";
 import {useRouter} from 'vue-router'
+import decodeHTML from "../../utils/htmlDecoder"
 
 let questionString = reactive({});
 let questionNumberString = reactive({});
@@ -54,7 +55,7 @@ loopTroughQuestions();
 function loopTroughQuestions() {
   try{
 
-    questionString.value = String(question[currentQuestionNumber]);
+    questionString.value = decodeHTML(String(question[currentQuestionNumber]));
     questionNumberString.value = (currentQuestionNumber);
 
     let allAnswers = [];
@@ -73,10 +74,10 @@ function loopTroughQuestions() {
     );
     allAnswers = shuffle(allAnswers);
 
-    firstAnwserString.value = allAnswers[0];
-    secondAnwserString.value = allAnswers[1];
-    thirdAnwserString.value = allAnswers[2];
-    fourthAnwserString.value = allAnswers[3];
+    firstAnwserString.value = decodeHTML(allAnswers[0]);
+    secondAnwserString.value = decodeHTML(allAnswers[1]);
+    thirdAnwserString.value = decodeHTML(allAnswers[2]);
+    fourthAnwserString.value = decodeHTML(allAnswers[3]);
 
     currentQuestionNumber++;
 
