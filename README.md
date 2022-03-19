@@ -18,6 +18,9 @@ If you want to run the application on your local machine, clone the repo as norm
 
 ## Additional Notes 
 Some API calls from the Open Trivia DB will give back empty responses or cause the questions and answers being mixed up in the results table
+You can find the wireframes and component tree on my Figma community page. However the component tree is included with this project.
+[Figma community page](https://www.figma.com/community/file/1087072528213887025/Trivia-Assignment)
+
 ## Build with
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Figma](https://www.figma.com/)
