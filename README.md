@@ -29,7 +29,7 @@ Will run the project on localhost:3000.
 - Add responsive design for mobile
 
 ## Additional Notes 
-Some API calls from the Open Trivia DB will give back empty responses or cause the questions and answers being mixed up in the results table
+Some API calls from the Open Trivia DB will give back empty responses or cause the questions and answers being mixed up in the results table. <br/>
 You can find the wireframes and component tree on my Figma community page. However the component tree is included with this project.
 [Figma community page](https://www.figma.com/community/file/1087072528213887025/Trivia-Assignment)
 
