@@ -1,4 +1,5 @@
 # Trivia Assigment
+[![web](https://img.shields.io/static/v1?logo=heroku&message=Online&label=Heroku&color=430098)](https://intense-bastion-85151.herokuapp.com/)
 
 ## About the assignment
 For this assignment we build a trivia game with Vue and Vite. Questions are provided by the open source API from Open Trivia DB and userData(id, username, highscore) is saved in the noroff-assignment-api
@@ -9,7 +10,8 @@ With this trivia game you're able to:
 
 
 ## How to use
-This application is deployed with Heroku so you're able to directly access it with following link [Trivia Game]() or click on the heroku badge above.
+This application is deployed with Heroku so you're able to directly access it with following link [Trivia Game](https://intense-bastion-85151.herokuapp.com/)
+) or click on the heroku badge above.
 
 If you want to run the application on your local machine, clone the repo as normal and follow bellow steps.
 
