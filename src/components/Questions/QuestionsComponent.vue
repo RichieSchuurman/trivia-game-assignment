@@ -70,8 +70,6 @@ function loopTroughQuestions() {
     
     let currentIncorrectAnswers = incorrectAnswers[currentQuestionNumber];
 
-    console.log(currentQuestionNumber)
-
     allAnswers.push(currentCorrectAnswer);
     allcorrectAnswers.push(currentCorrectAnswer);
     resultQuestions.push(questionString.value);
@@ -86,12 +84,6 @@ function loopTroughQuestions() {
     secondAnwserString.value = allAnswers[1];
     thirdAnwserString.value = allAnswers[2];
     fourthAnwserString.value = allAnswers[3];
-
-    //Debug logs
-    console.log(currentQuestionNumber);
-    console.log(question[currentQuestionNumber]);
-    console.log(currentCorrectAnswer); 
-    console.log(currentIncorrectAnswers);
 
     currentQuestionNumber++;
 
@@ -110,7 +102,6 @@ function loopTroughQuestions() {
 
         router.push('/results')
   }
-  
 }
 
 function checkAnswer(answer){

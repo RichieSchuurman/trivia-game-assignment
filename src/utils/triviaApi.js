@@ -12,8 +12,6 @@
 
       localStorage.setItem("url", url)
   
-      console.log(url);
-  
       await fetch(url)
       .then( response => response.json())
       .then( data => data.results )
@@ -22,8 +20,7 @@
           const question = results.map(results => results.question);
           const correctAnswer = results.map(results => results.correct_answer);
           const incorrectAnswer = results.map(results => results.incorrect_answers);
-          console.log(question)
-          console.log(correctAnswer)
+
           localStorage.setItem("correctAnswer", JSON.stringify(correctAnswer));
           localStorage.setItem("incorrectAnswer", JSON.stringify(incorrectAnswer));
           localStorage.setItem("questions", JSON.stringify(question));
@@ -49,8 +46,6 @@
         const question = results.map(results => results.question);
         const correctAnswer = results.map(results => results.correct_answer);
         const incorrectAnswer = results.map(results => results.incorrect_answers);
-        console.log(question)
-        console.log(correctAnswer)
 
         localStorage.setItem("correctAnswer", JSON.stringify(correctAnswer));
         localStorage.setItem("incorrectAnswer", JSON.stringify(incorrectAnswer));
