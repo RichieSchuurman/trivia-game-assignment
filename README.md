@@ -13,6 +13,16 @@ This application is deployed with Heroku so you're able to directly access it wi
 
 If you want to run the application on your local machine, clone the repo as normal and follow bellow steps.
 
+```
+npm install
+```
+Will install the dependencies for the project.
+
+```
+npm run dev
+```
+Will run the project on localhost:3000.
+
 ## Future work
 - Add responsive design for mobile
 
